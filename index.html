@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Movies Management System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- LOGIN PAGE -->
+  <div class="login-page active" id="loginPage">
+    <div class="login-container">
+      <h2>Movies Management</h2>
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+      <button onclick="login()">Login</button>
+      <p id="loginError" style="display:none;">Invalid credentials!</p>
+      <div class="suggestion-box">
+        <p><strong>Hint:</strong> Username: <code>admin</code>, Password: <code>admin</code></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN PAGE -->
+  <div class="main-page" id="mainPage">
+    <div class="dashboard">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <h2>Movies</h2>
+        <a href="#" class="active" data-section="dashboard" onclick="switchSection(event)">Dashboard</a>
+        <a href="#" data-section="manage" onclick="switchSection(event)">Manage Movies</a>
+        <a href="#" data-section="features" onclick="switchSection(event)">Features</a>
+        <a href="#" class="logout-btn" onclick="logout()">Logout</a>
+      </div>
+
+      <!-- Main Content -->
+      <div class="content">
+        <!-- Dashboard Section -->
+        <div class="section active" id="dashboard">
+          <h3>Welcome to the Movies Management System</h3>
+          <p>Use the sidebar to navigate through the system.</p>
+        </div>
+
+        <!-- Manage Movies Section -->
+        <div class="section" id="manage">
+          <h3>Add New Movie</h3>
+          <form id="movieForm" onsubmit="addMovie(event)">
+            <input type="text" id="title" placeholder="Title" required />
+            <input type="text" id="director" placeholder="Director" required />
+            <input type="number" id="year" placeholder="Year" required />
+            <select id="genre" required>
+              <option value="" disabled selected>Select Genre</option>
+              <option>Action</option>
+              <option>Comedy</option>
+              <option>Drama</option>
+              <option>Horror</option>
+              <option>Romance</option>
+              <option>Thriller</option>
+            </select>
+            <button type="submit">Add Movie</button>
+          </form>
+
+          <h3>Movie List</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Director</th>
+                <th>Year</th>
+                <th>Genre</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="movieList"></tbody>
+          </table>
+        </div>
+
+        <!-- Features Section -->
+        <div class="section" id="features">
+          <h3>Featured Bollywood Movies</h3>
+          <div class="feature-card">
+            <h4>3 Idiots (2009)</h4>
+            <p>A comedy-drama about the pressures of the Indian education system. Directed by Rajkumar Hirani.</p>
+          </div>
+          <div class="feature-card">
+            <h4>Gully Boy (2019)</h4>
+            <p>Inspired by the lives of Mumbai street rappers. A coming-of-age story directed by Zoya Akhtar.</p>
+          </div>
+          <div class="feature-card">
+            <h4>Dangal (2016)</h4>
+            <p>A biographical sports drama featuring the story of Indian wrestler Mahavir Singh Phogat and his daughters.</p>
+          </div>
+          <div class="feature-card">
+            <h4>Shershaah (2021)</h4>
+            <p>Based on the life of Captain Vikram Batra, a war hero of the Kargil War. An emotional patriotic journey.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
